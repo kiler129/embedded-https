@@ -12,16 +12,18 @@ universal, but the main aim is to run on embedded systems with low traffic needs
 Originally, the project was motivated by the desire to add HTTPS support to [Valetudo](https://github.com/Hypfer/Valetudo)
 to ensure passwords aren't sent in clear text, and password managers actually don't refuse to auto-fill them.
 
-However, the usage isn't specific to Valetudo. Every release contains two files:
+However, the usage isn't specific to Valetudo. Every release contains three files:
   - `tiny-ssl-reverse-proxy`: the proxy server
   - `run-proxy.sh`: bootstrap code for the proxy
+  - `reload-proxy.sh`: reload already running proxy
 
 
 ## Usage
 The proxy expects `cert.pem` and `key.pem` files to be present in the same directory as bootstrap code & proxy server.
 If certificate and/or key are missing and OpenSSL is installed, a self-signed certificate will be generated.
 
-To use the proxy simply run `run-proxy.sh`. You can set `EH_VERBOSE` to non-zero value to see log of requests.
+  - To use the proxy simply run `run-proxy.sh`. You can set `EH_VERBOSE` to non-zero value to see log of requests.
+  - If you want to reload proxy running in the background (e.g. to provision new cert) run `reload-proxy.sh`
 
 ### Usage with Valetudo
 1. Unpack release (e.g. `tar -xzvf ehttps-arm64.tar.gz`)
