@@ -1,10 +1,11 @@
 # Embedded HTTPS Proxy
 
-Many medium-footprint embedded systems with web management. Unfortunately, most of them don't bother implementing HTTPS.
-This is not only insecure, but often quite annoying given browsers' being stricter every day about HTTP pages (e.g. )
+Many medium-footprint embedded systems with web management are meant to be used with regular web browsers. Unfortunately, 
+most of them don't bother implementing HTTPS.  This is not only insecure, but often quite annoying given browsers' being 
+stricter every day about HTTP pages (esp. with login forms).
 
-This project implements a small HTTPS => HTTP reverse proxy, based on [`tiny-ssl-reverse-proxy`](https://github.com/sensiblecodeio/tiny-ssl-reverse-proxy). It is pretty universal, but the main aim is to run on embedded systems with
-low traffic needs.
+This project implements a small HTTPS => HTTP reverse proxy, based on [`tiny-ssl-reverse-proxy`](https://github.com/sensiblecodeio/tiny-ssl-reverse-proxy). It is pretty 
+universal, but the main aim is to run on embedded systems with low traffic needs.
 
 
 ## Structure
@@ -27,9 +28,9 @@ To use the proxy simply run `run-proxy.sh`. You can set `EH_VERBOSE` to non-zero
 2. (Optionally) Put `cert.pem` & `key.pem` in `ehttps-arm64`
 3. Upload: `scp -O -r ehttps-arm64 root@my-vacuum:/data/`
 4. Login via SSH and edit (e.g. with `nano`) the `/data/_root_postboot.sh` adding at the end:
-```shell
-/data/ehttps-arm64/run-proxy.sh > /dev/null 2>&1 &
-```
+   ```shell
+   /data/ehttps-arm64/run-proxy.sh > /dev/null 2>&1 &
+   ```
 5. `reboot` from the SSH session
 
 
